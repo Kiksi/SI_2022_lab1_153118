@@ -1,0 +1,80 @@
+1. Napraviv nov repo na mojot github profile -> Kiksi, izbrav glavnata granka da se vika master, go napraviv inicijalno private i dodadov README dokument vo koj odma direktno na github si go potpisav imeto i indeksot.
+2. So git clone na HTTPS go prevzemav lokalno
+3. So nano dodadov tekstualna datoteka shopping_list.txt, napisav proizvodi a potoa so git add shopping_list.txt pa git commit -m "Add 5 items to the shopping list" napraviv prv commit na master
+4. Potoa so istata procedura so nano dodadov i kolicina pa napraviv vtor commit na master so porakata "Add quantities to the items." i na kraj napraviv push
+5. Kreirav novi branches so git checkout -b branch1 pa potoa branch2, so cel grankite da se sinhronizirani vednas i da me prefrli na doslednite granki
+6. So gitcheckout -b branch1 avtomatski me prefrla na branch1, -b koristime koga ne postoi grankata, a otkako vekje ja iskreirav pristapuvav vo grankite so git checkout branch1/branch2 zavisnost od barnjeto
+7. Ja smeniv 5tata stavka i commit so porakata potrebnata poraka i potoa napraviv git push origin branch1 so cel da se postavi na branch1
+8. Se vrativ so git checkout master na master i ja smeniv vtorata stavka i napraviv commit so potrebnata poraka
+9. Gi sinhronizirav grankite, no branch1 go sinhronizirav so git pull origin master so shto poradi pull mi napravi merge
+10. Se prefrliv so git checkout na branch2 ja napraviv prvicnata promena sto bese modifikacija na 4tiot produkt
+11. Za da nema 2 komita, tuku da dodadam plus vo istiot komit koj bese na branch2 za 4tiot produkt iskoristiv git rebase -i HEAD^, mi otvori vim od posledniot commit
+tuka namesto pick napraviv edit, socuvav i koga izlegov napraviv git reset HEAD^ za da ja resetira poslednata promena i da go napravam komitot odnovo celosno, so dodavanje na 6ti produkt vo listata
+Mislam deka mozhev da iskoristam samo git reset HEAD^, zosto edit go koristime za 1 komit da razdelime na 2 ili povekje komiti, no go iskoristiv kako vezba za kolokvium
+12. Otkako napraviv git merge branch1 pomina bez konflikt, no otkako napraviv git merge branch2 - se javi konflikt koj go razreshiv so dodavanje na ushte eden commit za da gi spoi dvata commita(strategijata iskoristena ovde e recursive)
+13. Na kraj ja dodavam ovaa datoteka i gi sinhroniziram grankite so git rebase master
+
+Logs do 17 tocka(kako sto mozete da vidite napraviv log na head na branch2 namesto na master zatoa vo ovie logovi falat nekoi od komitite):
+commit 88230938846f3a6bbc69e84b8c3be2e142f79e8e (HEAD -> branch2)
+Author: Kiksi <karsov7@gmail.com>
+Date:   Wed Apr 6 13:34:05 2022 +0200
+
+    Modify item #4
+
+commit d4c71b2b6dee0b27023fb0b88efb942caa5318fe (origin/master, origin/HEAD, master)
+Author: Kiksi <karsov7@gmail.com>
+Date:   Wed Apr 6 13:26:57 2022 +0200
+
+    Change quantity of item #2
+
+commit be5cf31777c385dbfecd3847bd69637301f2f962
+Author: Kiksi <karsov7@gmail.com>
+Date:   Wed Apr 6 13:19:33 2022 +0200
+
+    Add quantities to the items.
+
+commit c1bd15197b329bf1c2bbc4546c9b5ab359832e06
+Author: Kiksi <karsov7@gmail.com>
+Date:   Wed Apr 6 13:16:08 2022 +0200
+
+    Add 5 items to the shopping list
+
+commit 3d7b77e019cf4dca1ce069c1dcef02ff735fa2a7
+Author: Kiksi <56222866+Kiksi@users.noreply.github.com>
+Date:   Wed Apr 6 13:09:01 2022 +0200
+
+    Update README.md
+
+commit 50b0f489060e01bcc9cb540ad355f3f8e32ed202
+Author: Kiksi <56222866+Kiksi@users.noreply.github.com>
+Date:   Wed Apr 6 13:08:37 2022 +0200
+
+    Initial commit
+
+
+
+Posle 18to baranje logs napisani so git log --oneline za da bide pomalo i pocitko(kako sto mozete da vidite napraviv log na head na branch2 namesto na master zatoa vo ovie logovi falat nekoi od komitite):
+
+d1e4c0b (HEAD -> branch2) Modify item #4 and add item #6.
+ccfebe7 Change quantity of item #2
+be5cf31 Add quantities to the items.
+c1bd151 Add 5 items to the shopping list
+3d7b77e Update README.md
+50b0f48 Initial commit
+
+
+Na kraj logs vo master(sinhronizacija vo branch1 napraviv so git pull origin master i odma mi napravi merge, trebase rebase da napravam - zatoa izgleda vaka):
+Arsov@DESKTOP-CN2SMDL MINGW64 ~/Desktop/SI_2022_lab1_153118/Final/SI_2022_lab1_153118 (master)
+$ git log --oneline
+2c7e398 (HEAD -> master) Merged branch2
+d1e4c0b (origin/branch2, branch2) Modify item #4 and add item #6.
+ccfebe7 Change quantity of item #2
+fae4566 (origin/master, origin/branch1, origin/HEAD, branch1) Merge branch 'master' of https://github.com/Kiksi/SI_2022_lab1_153118 into branch1
+d4c71b2 Change quantity of item #2
+2177e12 Change quantity of item #5
+be5cf31 Add quantities to the items.
+c1bd151 Add 5 items to the shopping list
+3d7b77e Update README.md
+50b0f48 Initial commit
+
+
